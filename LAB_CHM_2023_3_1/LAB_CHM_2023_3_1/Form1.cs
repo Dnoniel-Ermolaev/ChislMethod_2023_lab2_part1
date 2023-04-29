@@ -21,7 +21,14 @@ namespace LAB_CHM_2023_3_1
 
         private void тестоваяЗадачаToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form3 form3 = new Form3();
+            form3.Show();
+        }
 
+        private void основнаяЗадачаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
         }
 
         // =========  Functions =========
@@ -59,10 +66,6 @@ namespace LAB_CHM_2023_3_1
             return 1 - x * x;
         }
 
-        private void основнаяЗадачаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void label46_Click(object sender, EventArgs e)
         {
@@ -167,7 +170,8 @@ namespace LAB_CHM_2023_3_1
             // UpRelaxMethod
             double temp, prev, currentEps;
             double Eps_max;
-            double w = 1.99;
+            double w = Convert.ToDouble(textBox28.Text);
+            //double w = 1.99;
             while (true)
             {
                 Eps_max = 0.0;
@@ -388,7 +392,8 @@ namespace LAB_CHM_2023_3_1
             // UpRelaxMethod
             double temp, prev, currentEps;
             double Eps_max = 0.0;
-            double w = 1.99;
+            double w = Convert.ToDouble(textBox29.Text);
+            //double w = 1.99;
             while (true)
             {
                 Eps_max = 0.0;
