@@ -38,7 +38,8 @@ namespace LAB_CHM_2023_3_1
         }
         double f1(double x, double y) // Функция полученная через Лапласса
         {
-            return (2*(2*Math.Pow(x,2)-1)*Math.Exp(0-Math.Pow(x,2)-Math.Pow(y,2)+1)+ 2 * (2 * Math.Pow(y, 2) - 1) * Math.Exp(0 - Math.Pow(x, 2) - Math.Pow(y, 2) + 1));
+            //return (2*(2*Math.Pow(x,2)-1)*Math.Exp(0-Math.Pow(x,2)-Math.Pow(y,2)+1) + 2 * (2 * Math.Pow(y, 2) - 1) * Math.Exp(0 - Math.Pow(x, 2) - Math.Pow(y, 2) + 1));
+            return 4 * Math.Exp(1 - Math.Pow(x, 2) - Math.Pow(y, 2)) * (x * x + y * y - 1);
         }
 
         double f2(double x, double y) // F*
@@ -179,14 +180,23 @@ namespace LAB_CHM_2023_3_1
                 {
                     for (int i = 1; i < n; i++)
                     {
-                        prev = v[j][i];
-                        temp = A * prev + h2 * (v[j][i - 1] + v[j][i + 1]) + k2 * (v[j - 1][i] + v[j + 1][i]);
-                        v[j][i] = prev - w * (temp + f1(x[i], y[i])) / A;
+                        /* prev = v[j][i];
+                         temp = A * prev + h2 * (v[j][i - 1] + v[j][i + 1]) + k2 * (v[j - 1][i] + v[j + 1][i]);
+                         v[j][i] = prev - w * (temp + f1(x[i], y[i])) / A;
 
-                        //maxR1 += R[i][j] * R[i][j];
-                        currentEps = Math.Abs(v[j][i] - prev);
-                        if (currentEps > Eps_max)
-                            Eps_max = currentEps;
+                         //maxR1 += R[i][j] * R[i][j];
+                         currentEps = Math.Abs(v[j][i] - prev);
+                         if (currentEps > Eps_max)
+                             Eps_max = currentEps;
+                     */
+                        prev = v[i][j]; 
+                        temp = -w * (h2 * (v[i + 1][j] + v[i - 1][j]) + k2 * (v[i][j + 1] + v[i][j - 1]));
+                        temp = temp + (1 - w) * A * v[i][j] + w * f[i][j];
+                        temp = temp / A;
+                        currentEps = Math.Abs(prev - temp);
+                        if (currentEps > Eps_max) { Eps_max = currentEps; };
+                        v[i][j] = temp;
+
                     }
                 }
 
@@ -280,10 +290,10 @@ namespace LAB_CHM_2023_3_1
                     v[i][j] = Math.Round(v[i][j] * 1000) / 1000;
                     u[i][j] = Math.Round(u[i][j] * 1000) / 1000;
                    
-                    dataGridView1.Rows[j + 1].Cells[i + 2].Value = v[i][j];
+                    dataGridView1.Rows[j + 1].Cells[i + 2].Value = u[i][j];
+                    
+                    dataGridView2.Rows[j + 1].Cells[i + 2].Value = v[i][j];
 
-                    dataGridView2.Rows[j + 1].Cells[i + 2].Value = u[i][j];
-                   
                     dataGridView3.Rows[j + 1].Cells[i + 2].Value = Pogr;
 
                     if (Pogr > MaxPogr)
@@ -307,7 +317,6 @@ namespace LAB_CHM_2023_3_1
 
             textBox14.Text = "Нулевое начальноe приближение";
 
-           
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -506,7 +515,7 @@ namespace LAB_CHM_2023_3_1
             prev = 0.0;
             currentEps = 0.0;
             double Eps_max2;
-            w = 1.99;
+            w = Convert.ToDouble(textBox29.Text);
             while (true)
             {
                 Eps_max2 = 0.0;

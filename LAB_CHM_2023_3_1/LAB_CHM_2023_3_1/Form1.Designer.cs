@@ -61,6 +61,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -105,7 +107,10 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox29 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -114,11 +119,6 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -151,7 +151,7 @@
             this.постановкаЗадачToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1060, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1293, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -180,12 +180,15 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1060, 567);
+            this.tabControl1.Size = new System.Drawing.Size(1293, 775);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -197,7 +200,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1052, 541);
+            this.tabPage1.Size = new System.Drawing.Size(1285, 749);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Тестовая задача";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -377,23 +380,29 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.tabControl2);
             this.groupBox3.Location = new System.Drawing.Point(242, 190);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(802, 345);
+            this.groupBox3.Size = new System.Drawing.Size(1035, 553);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Таблицы";
             // 
             // tabControl2
             // 
+            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tabPage3);
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Location = new System.Drawing.Point(6, 19);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(790, 320);
+            this.tabControl2.Size = new System.Drawing.Size(1023, 528);
             this.tabControl2.TabIndex = 3;
             // 
             // tabPage3
@@ -402,7 +411,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(782, 294);
+            this.tabPage3.Size = new System.Drawing.Size(1015, 502);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "U(x,y)";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -412,7 +421,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(770, 282);
+            this.dataGridView1.Size = new System.Drawing.Size(1003, 490);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage4
@@ -421,7 +430,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(782, 294);
+            this.tabPage4.Size = new System.Drawing.Size(1015, 502);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "V(x,y)";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -431,7 +440,7 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(6, 6);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(770, 282);
+            this.dataGridView2.Size = new System.Drawing.Size(1003, 490);
             this.dataGridView2.TabIndex = 1;
             // 
             // tabPage5
@@ -440,7 +449,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(782, 294);
+            this.tabPage5.Size = new System.Drawing.Size(1015, 502);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "|U(x,y)-V(x,y)|";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -450,7 +459,7 @@
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(6, 6);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(770, 282);
+            this.dataGridView3.Size = new System.Drawing.Size(1003, 490);
             this.dataGridView3.TabIndex = 1;
             // 
             // groupBox1
@@ -472,6 +481,23 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры";
+            // 
+            // textBox28
+            // 
+            this.textBox28.Location = new System.Drawing.Point(119, 141);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(90, 20);
+            this.textBox28.TabIndex = 10;
+            this.textBox28.Text = "1,99";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 144);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Параметр w:";
             // 
             // textBox4
             // 
@@ -559,7 +585,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1052, 541);
+            this.tabPage2.Size = new System.Drawing.Size(1285, 749);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Основная задача";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -599,7 +625,7 @@
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.label24);
             this.groupBox2.Controls.Add(this.label23);
-            this.groupBox2.Location = new System.Drawing.Point(231, 314);
+            this.groupBox2.Location = new System.Drawing.Point(231, 525);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(802, 221);
             this.groupBox2.TabIndex = 11;
@@ -807,7 +833,7 @@
             this.groupBox5.Controls.Add(this.tabControl3);
             this.groupBox5.Location = new System.Drawing.Point(231, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(802, 302);
+            this.groupBox5.Size = new System.Drawing.Size(1046, 513);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Таблицы";
@@ -820,7 +846,7 @@
             this.tabControl3.Location = new System.Drawing.Point(6, 19);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(790, 278);
+            this.tabControl3.Size = new System.Drawing.Size(1034, 488);
             this.tabControl3.TabIndex = 3;
             // 
             // tabPage6
@@ -829,7 +855,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(782, 252);
+            this.tabPage6.Size = new System.Drawing.Size(1026, 462);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "V(x,y)";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -839,7 +865,7 @@
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Location = new System.Drawing.Point(6, 6);
             this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(773, 241);
+            this.dataGridView4.Size = new System.Drawing.Size(1014, 450);
             this.dataGridView4.TabIndex = 0;
             // 
             // tabPage7
@@ -848,7 +874,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(782, 252);
+            this.tabPage7.Size = new System.Drawing.Size(1026, 462);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "V2(x,y)";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -858,7 +884,7 @@
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView5.Location = new System.Drawing.Point(6, 6);
             this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(770, 240);
+            this.dataGridView5.Size = new System.Drawing.Size(1014, 450);
             this.dataGridView5.TabIndex = 1;
             // 
             // tabPage8
@@ -867,7 +893,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(782, 252);
+            this.tabPage8.Size = new System.Drawing.Size(1026, 462);
             this.tabPage8.TabIndex = 2;
             this.tabPage8.Text = "|V(x,y)-V2(x,y)|";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -877,7 +903,7 @@
             this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView6.Location = new System.Drawing.Point(6, 6);
             this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(770, 240);
+            this.dataGridView6.Size = new System.Drawing.Size(1014, 450);
             this.dataGridView6.TabIndex = 1;
             // 
             // groupBox6
@@ -901,6 +927,23 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Параметры";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 178);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "w(0,2)";
+            // 
+            // textBox29
+            // 
+            this.textBox29.Location = new System.Drawing.Point(119, 148);
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new System.Drawing.Size(90, 20);
+            this.textBox29.TabIndex = 12;
+            this.textBox29.Text = "1,99";
+            // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(119, 109);
@@ -908,6 +951,15 @@
             this.textBox5.Size = new System.Drawing.Size(90, 20);
             this.textBox5.TabIndex = 8;
             this.textBox5.Text = "1e-6";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 151);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(72, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Параметр w:";
             // 
             // label34
             // 
@@ -978,54 +1030,11 @@
             this.label38.TabIndex = 0;
             this.label38.Text = "Размеры сетки";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 144);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Параметр w:";
-            // 
-            // textBox28
-            // 
-            this.textBox28.Location = new System.Drawing.Point(119, 141);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(90, 20);
-            this.textBox28.TabIndex = 10;
-            this.textBox28.Text = "1,99";
-            // 
-            // textBox29
-            // 
-            this.textBox29.Location = new System.Drawing.Point(119, 148);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(90, 20);
-            this.textBox29.TabIndex = 12;
-            this.textBox29.Text = "1,99";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 151);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Параметр w:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 178);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "w(0,2)";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1060, 606);
+            this.ClientSize = new System.Drawing.Size(1293, 814);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
