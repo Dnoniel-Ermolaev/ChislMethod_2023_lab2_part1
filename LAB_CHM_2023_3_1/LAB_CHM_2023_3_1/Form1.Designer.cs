@@ -739,18 +739,18 @@
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(8, 176);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(438, 13);
+            this.label30.Size = new System.Drawing.Size(443, 13);
             this.label30.TabIndex = 37;
-            this.label30.Text = "Схема на сетке с половинным шагом решена с невязкой (евклидова норма) R(p2) = ";
+            this.label30.Text = "Схема на сетке с половинным шагом решена с невязкой (норма максимума) R(p2) = ";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(8, 146);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(355, 13);
+            this.label29.Size = new System.Drawing.Size(360, 13);
             this.label29.TabIndex = 36;
-            this.label29.Text = "Невязка СЛАУ на начальном приближении (евклидова норма) R(0)=";
+            this.label29.Text = "Невязка СЛАУ на начальном приближении (норма максимума) R(0)=";
             // 
             // textBox20
             // 
@@ -797,18 +797,18 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(8, 95);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(314, 13);
+            this.label26.Size = new System.Drawing.Size(319, 13);
             this.label26.TabIndex = 12;
-            this.label26.Text = "Схема на сетке решена с невязкой (евклидова норма) R(p)=";
+            this.label26.Text = "Схема на сетке решена с невязкой (норма максимума) R(p)=";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(8, 69);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(355, 13);
+            this.label25.Size = new System.Drawing.Size(360, 13);
             this.label25.TabIndex = 2;
-            this.label25.Text = "Невязка СЛАУ на начальном приближении (евклидова норма) R(0)=";
+            this.label25.Text = "Невязка СЛАУ на начальном приближении (норма максимума) R(0)=";
             // 
             // label24
             // 
