@@ -39,7 +39,7 @@ namespace LAB_CHM_2023_3_1
         double f1(double x, double y) // Функция полученная через Лапласса
         {
             //return (2*(2*Math.Pow(x,2)-1)*Math.Exp(0-Math.Pow(x,2)-Math.Pow(y,2)+1) + 2 * (2 * Math.Pow(y, 2) - 1) * Math.Exp(0 - Math.Pow(x, 2) - Math.Pow(y, 2) + 1));
-            return 4 * Math.Exp(1 - Math.Pow(x, 2) - Math.Pow(y, 2)) * (x * x + y * y - 1);
+            return -4 * Math.Exp(1 - Math.Pow(x, 2) - Math.Pow(y, 2)) * (x * x + y * y - 1);
         }
 
         double f2(double x, double y) // F*
@@ -86,7 +86,7 @@ namespace LAB_CHM_2023_3_1
             int N_max = Convert.ToInt32(textBox3.Text);
             double Eps = Convert.ToDouble(textBox4.Text);
             double h = 2.0 / (double)n, k = 2.0 / (double)m; //Шаги по x и y
-            double h2 = 1.0 / (h * h), k2 = 1.0 / (k * k); //могут быть минусы
+            double h2 = -1.0 / (h * h), k2 = -1.0 / (k * k); 
             double A = -2 * (h2 + k2);
             double[][] v;
             double[][] f;
@@ -312,7 +312,7 @@ namespace LAB_CHM_2023_3_1
             int N_max = Convert.ToInt32(textBox6.Text);
             double Eps = Convert.ToDouble(textBox5.Text);
             double h = 2.0 / n, k = 2.0 / m; //Шаги по x и y
-            double h2 = -1.0 / (h * h), k2 = -1.0 / (k * k); //ВОТ ТУТ ЕСЛИ МИНУСЫ ОСТАВЛЯТЬ, ТО БУДЕТ 1 в 1 с капкаевой лабой
+            double h2 = -1.0 / (h * h), k2 = -1.0 / (k * k); 
             double A = -2 * (h2 + k2);
             double[][] v;
             double[][] f;
@@ -378,7 +378,7 @@ namespace LAB_CHM_2023_3_1
                     v[i][j] = 0.0;
                 }
             }
-            // UpRelaxMethod ЧТО-ТО НЕ ТАК, ОБРАТИТЬ ВНИМАНИЕ НА h2,k2
+            // UpRelaxMethod 
             double temp, prev, currentEps;
             double Eps_max;
             double w = Convert.ToDouble(textBox29.Text);
@@ -428,8 +428,8 @@ namespace LAB_CHM_2023_3_1
 
             h = 2.0 / n;
             k = 2.0 / m;
-            h2 = -1.0 / (h * h); //ВОТ ТУТ ЕСЛИ МИНУСЫ ОСТАВЛЯТЬ, ТО БУДЕТ 1 в 1 с капкаевой лабой
-            k2 = -1.0 / (k * k); //ВОТ ТУТ ЕСЛИ МИНУСЫ ОСТАВЛЯТЬ, ТО БУДЕТ 1 в 1 с капкаевой лабой
+            h2 = -1.0 / (h * h); 
+            k2 = -1.0 / (k * k); 
             A = -2 * (h2 + k2);
 
             int p2 = 0;
