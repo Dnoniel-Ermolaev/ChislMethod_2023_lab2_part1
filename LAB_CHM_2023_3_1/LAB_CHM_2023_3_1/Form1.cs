@@ -67,6 +67,13 @@ namespace LAB_CHM_2023_3_1
             return 1 - x * x;
         }
 
+        double optimal_W(double n,double m)
+        {
+            double w_res = 0.0;
+            double l = 1 - 0.5 * (1 / ( Math.Pow((1 / (2 / n)), 2) + Math.Pow((1 / (2 / m)), 2)) ) * 4 * (Math.Pow((Math.Sin(Math.PI / (n * 2))/((2 / n))), 2) + Math.Pow((Math.Sin(Math.PI / (m * 2)) / ((2 / m))), 2));
+            w_res = 2 / (1 + Math.Sqrt(1-Math.Pow(l,2)));
+            return w_res;
+        }
 
         private void label46_Click(object sender, EventArgs e)
         {
@@ -79,6 +86,12 @@ namespace LAB_CHM_2023_3_1
         }
 
         //РАБОТАЕТ ВЕРНО, КАК ПО ПРОГЕ КАПКАЕВА
+        //Вынес массивы для передачу в отрисовку
+        double[][] v1;
+        double[][] u;
+        double[][] v2;
+        double[][] v2_2;
+
         private void button1_Click(object sender, EventArgs e)
         {
             int n = Convert.ToInt32(textBox1.Text);
@@ -88,9 +101,9 @@ namespace LAB_CHM_2023_3_1
             double h = 2.0 / (double)n, k = 2.0 / (double)m; //Шаги по x и y
             double h2 = -1.0 / (h * h), k2 = -1.0 / (k * k); 
             double A = -2 * (h2 + k2);
-            double[][] v;
+            //double[][] v1;
             double[][] f;
-            double[][] u;
+            //double[][] u;
             double[] x, y;
             int p = 0; //Текущее число итераций
             char[] buffer = new char [100];
@@ -101,13 +114,13 @@ namespace LAB_CHM_2023_3_1
 
             x = new double[n + 1];
             y = new double[m + 1];
-            v = new double[n + 1][];
+            v1 = new double[n + 1][];
             f = new double[n + 1][];
             u = new double[n + 1][];
 
             for (int i = 0; i <= n; i++)
             {
-                v[i] = new double[m + 1];
+                v1[i] = new double[m + 1];
                 f[i] = new double[m + 1];
                 u[i] = new double[m + 1];
             }
@@ -138,23 +151,23 @@ namespace LAB_CHM_2023_3_1
 
             //MaxF = Math.Sqrt(MaxF);
 
-            for (int j = 0; j <= m; j++)  //Заполнение граничных условий в массив v
+            for (int j = 0; j <= m; j++)  //Заполнение граничных условий в массив v1
             {
-                v[0][j] = u1(-1, y[j]);
-                v[n][j] = u1(1, y[j]);
+                v1[0][j] = u1(-1, y[j]);
+                v1[n][j] = u1(1, y[j]);
             }
 
-            for (int i = 0; i <= n; i++)  //Заполнение граничных условий в массив v
+            for (int i = 0; i <= n; i++)  //Заполнение граничных условий в массив v1
             {
-                v[i][0] = u1(x[i], -1);
-                v[i][m] = u1(x[i], 1);
+                v1[i][0] = u1(x[i], -1);
+                v1[i][m] = u1(x[i], 1);
             }
 
             for (int j = 1; j < m; j++)    //Нулевое начальное приближение
             {
                 for (int i = 1; i < n; i++)
                 {
-                    v[i][j] = 0.0;
+                    v1[i][j] = 0.0;
                 }
             }
 
@@ -162,6 +175,13 @@ namespace LAB_CHM_2023_3_1
             double temp, prev, currentEps;
             double Eps_max;
             double w = Convert.ToDouble(textBox28.Text);
+            double w_opt = optimal_W(n, m);
+            MessageBox.Show("Ваш оптимальный W = " + w_opt.ToString());
+
+            if (checkBox1.Checked)
+            {
+                w = w_opt;
+            }
             //double w = 1.99;
             while (true)
             {
@@ -170,13 +190,13 @@ namespace LAB_CHM_2023_3_1
                 {
                     for (int i = 1; i < n; i++)
                     {
-                        prev = v[i][j]; 
-                        temp = -w * (h2 * (v[i + 1][j] + v[i - 1][j]) + k2 * (v[i][j + 1] + v[i][j - 1]));
-                        temp = temp + (1 - w) * A * v[i][j] + w * f[i][j];
+                        prev = v1[i][j]; 
+                        temp = -w * (h2 * (v1[i + 1][j] + v1[i - 1][j]) + k2 * (v1[i][j + 1] + v1[i][j - 1]));
+                        temp = temp + (1 - w) * A * v1[i][j] + w * f[i][j];
                         temp = temp / A;
                         currentEps = Math.Abs(prev - temp);
                         if (currentEps > Eps_max) { Eps_max = currentEps; };
-                        v[i][j] = temp;
+                        v1[i][j] = temp;
 
                     }
                 }
@@ -191,7 +211,7 @@ namespace LAB_CHM_2023_3_1
             {
                 for (int i = 1; i < n; i++)
                 {
-                    temp = A * v[i][j] + h2 * (v[i - 1][j] + v[i + 1][j]) + k2 * (v[i][j - 1] + v[i][j + 1]) - f1(x[i], y[j]);
+                    temp = A * v1[i][j] + h2 * (v1[i - 1][j] + v1[i + 1][j]) + k2 * (v1[i][j - 1] + v1[i][j + 1]) - f1(x[i], y[j]);
                     if (Math.Abs(temp) >= maxR1) maxR1 = Math.Abs(temp);
                     //maxR1 += temp * temp;
                 }
@@ -200,7 +220,8 @@ namespace LAB_CHM_2023_3_1
 
             // table
 
-            dataGridView1.Rows.Clear();
+          
+         dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("C1", "");
             dataGridView1.Columns[0].Width = 50;
@@ -272,13 +293,13 @@ namespace LAB_CHM_2023_3_1
             {
                 for (int i = 0; i <= n; i++)
                 {
-                    Pogr = Math.Abs(u[i][j] - v[i][j]);
-                    v[i][j] = Math.Round(v[i][j] * 1000) / 1000;
+                    Pogr = Math.Abs(u[i][j] - v1[i][j]);
+                    v1[i][j] = Math.Round(v1[i][j] * 1000) / 1000;
                     u[i][j] = Math.Round(u[i][j] * 1000) / 1000;
                    
                     dataGridView1.Rows[j + 1].Cells[i + 2].Value = u[i][j];
                     
-                    dataGridView2.Rows[j + 1].Cells[i + 2].Value = v[i][j];
+                    dataGridView2.Rows[j + 1].Cells[i + 2].Value = v1[i][j];
 
                     dataGridView3.Rows[j + 1].Cells[i + 2].Value = Pogr;
 
@@ -314,7 +335,7 @@ namespace LAB_CHM_2023_3_1
             double h = 2.0 / n, k = 2.0 / m; //Шаги по x и y
             double h2 = -1.0 / (h * h), k2 = -1.0 / (k * k); 
             double A = -2 * (h2 + k2);
-            double[][] v;
+            //double[][] v2;
             double[][] f;
             double[] x, y;
 
@@ -329,12 +350,12 @@ namespace LAB_CHM_2023_3_1
 
             x = new double[n + 1];
             y = new double[m + 1];
-            v = new double[n + 1][];
+            v2 = new double[n + 1][];
             f = new double[n + 1][];
 
             for (int i = 0; i <= n; i++)
             {
-                v[i] = new double[m + 1];
+                v2[i] = new double[m + 1];
                 f[i] = new double[m + 1];
             }
 
@@ -359,29 +380,33 @@ namespace LAB_CHM_2023_3_1
             }
             //MaxF = Math.Sqrt(MaxF);
 
-            for (int j = 0; j <= m; j++)  //Заполнение граничных условий в массив v
+            for (int j = 0; j <= m; j++)  //Заполнение граничных условий в массив v2
             {
-                v[0][j] = mu1(y[j]);
-                v[n][j] = mu2(y[j]);
+                v2[0][j] = mu1(y[j]);
+                v2[n][j] = mu2(y[j]);
             }
 
-            for (int i = 0; i <= n; i++)  //Заполнение граничных условий в массив v
+            for (int i = 0; i <= n; i++)  //Заполнение граничных условий в массив v2
             {
-                v[i][0] = mu3(x[i]);
-                v[i][m] = mu4(x[i]);
+                v2[i][0] = mu3(x[i]);
+                v2[i][m] = mu4(x[i]);
             }
 
             for (int j = 1; j < m; j++)    //Нулевое начальное приближение
             {
                 for (int i = 1; i < n; i++)
                 {
-                    v[i][j] = 0.0;
+                    v2[i][j] = 0.0;
                 }
             }
             // UpRelaxMethod 
             double temp, prev, currentEps;
             double Eps_max;
             double w = Convert.ToDouble(textBox29.Text);
+            double w_opt = optimal_W(n, m);
+            MessageBox.Show("Ваш оптимальный W = " + w_opt.ToString());
+            w = w_opt;
+
             //double w = 1.99;
             while (true)
             {
@@ -390,13 +415,13 @@ namespace LAB_CHM_2023_3_1
                 {
                     for (int i = 1; i < n; i++)
                     {
-                        prev = v[i][j]; 
-                        temp = -w * (h2 * (v[i + 1][j] + v[i - 1][j]) + k2 * (v[i][j + 1] + v[i][j - 1]));
-                        temp = temp + (1 - w) * A * v[i][j] + w * f[i][j];
+                        prev = v2[i][j]; 
+                        temp = -w * (h2 * (v2[i + 1][j] + v2[i - 1][j]) + k2 * (v2[i][j + 1] + v2[i][j - 1]));
+                        temp = temp + (1 - w) * A * v2[i][j] + w * f[i][j];
                         temp = temp / A;
                         currentEps = Math.Abs(prev - temp);
                         if (currentEps > Eps_max) { Eps_max = currentEps; };
-                        v[i][j] = temp;
+                        v2[i][j] = temp;
                     }
                 }
 
@@ -410,7 +435,7 @@ namespace LAB_CHM_2023_3_1
             {
                 for (int i = 1; i < n; i++)
                 {
-                    temp = A * v[i][j] + h2 * (v[i - 1][j] + v[i + 1][j]) + k2 * (v[i][j - 1] + v[i][j + 1])  - f2(x[i], y[j]);
+                    temp = A * v2[i][j] + h2 * (v2[i - 1][j] + v2[i + 1][j]) + k2 * (v2[i][j - 1] + v2[i][j + 1])  - f2(x[i], y[j]);
                     if (temp >= maxR1) maxR1 = Math.Abs(temp);
                     //maxR1 += temp * temp;
                 }
@@ -420,10 +445,10 @@ namespace LAB_CHM_2023_3_1
             // solution whis step / 2
             n = 2 * n;
             m = 2 * m;
-            double[][] v2;
+            //double[][] v2_2;
             x = new double[n + 1];
             y = new double[m + 1];
-            v2 = new double[n + 1][];
+            v2_2 = new double[n + 1][];
             f = new double[n + 1][];
 
             h = 2.0 / n;
@@ -437,7 +462,7 @@ namespace LAB_CHM_2023_3_1
 
             for (int i = 0; i <= n; i++)
             {
-                v2[i] = new double[m + 1];
+                v2_2[i] = new double[m + 1];
                 f[i] = new double[m + 1];
             }
 
@@ -457,7 +482,7 @@ namespace LAB_CHM_2023_3_1
                 {
                     f[i][j] = f2(x[i], y[j]);
                     //MaxF2 += f[i][j] * f[i][j];
-                    if (Math.Abs(f[i][j]) > MaxF) MaxF2 = Math.Abs(f[i][j]);
+                    if (Math.Abs(f[i][j]) > MaxF2) MaxF2 = Math.Abs(f[i][j]);
                 }
             }
 
@@ -465,21 +490,21 @@ namespace LAB_CHM_2023_3_1
 
             for (int j = 0; j <= m; j++)  //Заполнение граничных условий в массив v
             {
-                v2[0][j] = mu1(y[j]);
-                v2[n][j] = mu2(y[j]);
+                v2_2[0][j] = mu1(y[j]);
+                v2_2[n][j] = mu2(y[j]);
             }
 
             for (int i = 0; i <= n; i++)  //Заполнение граничных условий в массив v
             {
-                v2[i][0] = mu3(x[i]);
-                v2[i][m] = mu4(x[i]);
+                v2_2[i][0] = mu3(x[i]);
+                v2_2[i][m] = mu4(x[i]);
             }
 
             for (int j = 1; j < m; j++)    //Нулевое начальное приближение
             {
                 for (int i = 1; i < n; i++)
                 {
-                    v2[i][j] = 0.0;
+                    v2_2[i][j] = 0.0;
                 }
             }
 
@@ -488,7 +513,12 @@ namespace LAB_CHM_2023_3_1
             prev = 0.0;
             currentEps = 0.0;
             double Eps_max2;
+            Eps = Eps / 4.0;
             w = Convert.ToDouble(textBox29.Text);
+            w_opt = optimal_W(n, m);
+            MessageBox.Show("Ваш оптимальный W = " + w_opt.ToString());
+            w = w_opt;
+
             while (true)
             {
                 Eps_max2 = 0.0;
@@ -496,13 +526,13 @@ namespace LAB_CHM_2023_3_1
                 {
                     for (int i = 1; i < n; i++)
                     {
-                        prev = v2[i][j];
-                        temp = -w * (h2 * (v2[i + 1][j] + v2[i - 1][j]) + k2 * (v2[i][j + 1] + v2[i][j - 1]));
-                        temp = temp + (1 - w) * A * v2[i][j] + w * f2(x[i], y[j]);
+                        prev = v2_2[i][j];
+                        temp = -w * (h2 * (v2_2[i + 1][j] + v2_2[i - 1][j]) + k2 * (v2_2[i][j + 1] + v2_2[i][j - 1]));
+                        temp = temp + (1 - w) * A * v2_2[i][j] + w * f2(x[i], y[j]);
                         temp = temp / A;
                         currentEps = Math.Abs(prev - temp);
-                        if (currentEps > Eps_max) { Eps_max2 = currentEps; };
-                        v2[i][j] = temp;
+                        if (currentEps > Eps_max2) { Eps_max2 = currentEps; };
+                        v2_2[i][j] = temp;
                     }
                 }
 
@@ -517,8 +547,8 @@ namespace LAB_CHM_2023_3_1
             {
                 for (int i = 1; i < n; i++)
                 {
-                    temp = A * v2[i][j] + h2 * (v2[i - 1][j] + v2[i + 1][j]) + k2 * (v2[i][j - 1] + v2[i][j + 1]) - f2(x[i], y[j]);
-                    if (temp >= maxR1) maxR = Math.Abs(temp);
+                    temp = A * v2_2[i][j] + h2 * (v2_2[i - 1][j] + v2_2[i + 1][j]) + k2 * (v2_2[i][j - 1] + v2_2[i][j + 1]) - f2(x[i], y[j]);
+                    if (temp >= maxR) maxR = Math.Abs(temp);
                     //maxR += temp * temp;
                 }
             }
@@ -604,13 +634,13 @@ namespace LAB_CHM_2023_3_1
                 for (int i = 0; i <= n; i++)
                 {
                     Pogr = 0.0;
-                    Pogr = Math.Abs(v[i][j] - v2[i * 2][j * 2]);
-                    v[i][j] = Math.Round(v[i][j] * 1000) / 1000;
-                    v2[2 * i][2 * j] = Math.Round(v2[2 * i][2 * j] * 1000) / 1000;
+                    Pogr = Math.Abs(v2[i][j] - v2_2[i * 2][j * 2]);
+                    v2[i][j] = Math.Round(v2[i][j] * 1000) / 1000;
+                    v2_2[2 * i][2 * j] = Math.Round(v2_2[2 * i][2 * j] * 1000) / 1000;
                    
-                        dataGridView4.Rows[j + 1].Cells[i + 2].Value = v[i][j];
+                        dataGridView4.Rows[j + 1].Cells[i + 2].Value = v2[i][j];
                    
-                        dataGridView5.Rows[j + 1].Cells[i + 2].Value = v2[2 * i][2 * j];
+                        dataGridView5.Rows[j + 1].Cells[i + 2].Value = v2_2[2 * i][2 * j];
                    
                         dataGridView6.Rows[j + 1].Cells[i + 2].Value = Pogr;
                     if (Pogr > MaxPogr)
@@ -621,6 +651,17 @@ namespace LAB_CHM_2023_3_1
                     }
                 }
             }
+
+            //МОЖЕТ БЫТЬ НА ДОРАБОТКЕ, НУЖНО ДЛЯ ЗАПОЛНЕНИЯ ТАБИЦЫ С ПОЛОВИННЫМ ШАГОМ ПО КАЖДОМУ ШАГУ
+            /*for (int j = 0; j <= m*2; j++)              //Заполнение таблиц значениями
+            {
+                for (int i = 0; i <= n*2; i++)
+                {
+                    v2_2[i][j] = Math.Round(v2_2[i][j] * 1000) / 1000;
+
+                    dataGridView5.Rows[j + 1].Cells[i + 2].Value = v2_2[i][j];
+                }
+            }*/ 
 
             // Справка
             textBox17.Text = Convert.ToString(p);
@@ -639,5 +680,24 @@ namespace LAB_CHM_2023_3_1
 
         
     }
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            int n = Convert.ToInt32(textBox1.Text);
+            int m = Convert.ToInt32(textBox2.Text);
+            Form4 form4 = new Form4(u,v1,n,m,false);
+            form4.Show();
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int n = Convert.ToInt32(textBox8.Text);
+            int m = Convert.ToInt32(textBox7.Text);
+            Form4 form4 = new Form4(v2, v2_2, n, m,true);
+            form4.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

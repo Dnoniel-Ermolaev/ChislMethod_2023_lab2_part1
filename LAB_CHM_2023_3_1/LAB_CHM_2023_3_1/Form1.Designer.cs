@@ -34,6 +34,7 @@
             this.основнаяЗадачаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
@@ -73,6 +74,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox27 = new System.Windows.Forms.TextBox();
@@ -119,6 +121,7 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -193,6 +196,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.groupBox3);
@@ -205,9 +209,19 @@
             this.tabPage1.Text = "Тестовая задача";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(8, 315);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(217, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "ГРАФООООООН";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(8, 190);
+            this.button1.Location = new System.Drawing.Point(8, 209);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(217, 23);
             this.button1.TabIndex = 5;
@@ -235,7 +249,7 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Location = new System.Drawing.Point(242, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(802, 178);
+            this.groupBox4.Size = new System.Drawing.Size(1035, 178);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Справка";
@@ -464,6 +478,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.textBox28);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBox4);
@@ -477,7 +492,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(8, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(217, 178);
+            this.groupBox1.Size = new System.Drawing.Size(217, 197);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Параметры";
@@ -578,6 +593,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox5);
@@ -590,9 +606,19 @@
             this.tabPage2.Text = "Основная задача";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(8, 351);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(217, 23);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "ГРАФООООООН";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(8, 221);
+            this.button2.Location = new System.Drawing.Point(8, 252);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(217, 25);
             this.button2.TabIndex = 12;
@@ -922,7 +948,7 @@
             this.groupBox6.Controls.Add(this.label38);
             this.groupBox6.Location = new System.Drawing.Point(8, 6);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(217, 209);
+            this.groupBox6.Size = new System.Drawing.Size(217, 240);
             this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Параметры";
@@ -1030,6 +1056,16 @@
             this.label38.TabIndex = 0;
             this.label38.Text = "Размеры сетки";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(13, 174);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(97, 17);
+            this.checkBox1.TabIndex = 11;
+            this.checkBox1.Text = "Оптимальный";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1040,6 +1076,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Метод верхней релаксации. Ермолаев Данила. Группа 3. Вариант 3";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1167,6 +1204,9 @@
         private System.Windows.Forms.TextBox textBox29;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
